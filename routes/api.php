@@ -24,3 +24,5 @@ Route::get('mahasiswa',[MahasiswaController::class, 'index']);
 Route::post('mahasiswa/store',[MahasiswaController::class, 'store']);
 
 Route::get('mahasiswa/show/{nim}',[MahasiswaController::class, 'show']);
+
+Route::post('mahasiswa/update/{id}',[MahasiswaController::class, 'update']);

@@ -13,7 +13,7 @@ class Mahasiswa extends Model
 
     protected $table = 'mahasiswa';
 
-    protected $filable = [
+    protected $fillable = [
         'nim',
         'nama',
         'angkatan',

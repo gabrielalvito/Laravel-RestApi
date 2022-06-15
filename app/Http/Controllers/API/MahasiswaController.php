@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Helpers\RestApi;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
+use Exception;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -43,7 +44,38 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $request->validate([
+                'nim' => 'required',
+                'nama' => 'required',
+                'angkatan' => 'required',
+                'semester' => 'required',
+                'ipk' => 'required',
+                'email' => 'required',
+                'telepon' => 'required',
+            ]);
+
+            $mahasiswa = Mahasiswa::create([
+                'nim' => $request->nim,
+                'nama' => $request->nama,
+                'angkatan' => $request->angkatan,
+                'semester' => $request->semester,
+                'ipk' => $request->ipk,
+                'email' => $request->email,
+                'telepon' => $request->telepon
+            ]);
+
+            $data = Mahasiswa::where('id', '=', $mahasiswa->id)->get();
+
+            if($data){
+                return RestApi::createApi(200, 'Berhasil', $data);
+            }else{
+                return RestApi::createApi(400, 'Gagal');
+            }
+
+        }catch(Exception $error){
+            return RestApi::createApi(400, 'Gagal');
+        }
     }
 
     /**

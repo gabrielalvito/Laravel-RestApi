@@ -159,6 +159,18 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $mahasiswa = Mahasiswa::findOrFail($id);
+            
+            $data = $mahasiswa->delete();
+
+            if($data){
+                return RestApi::createApi(200, 'Data Berhasil Terhapus');
+            }else{
+                return RestApi::createApi(400, 'Data Gagal Terhapus');
+            }
+        }catch(Exception $error){
+            return RestApi::createApi(400, 'Gagal');
+        }
     }
 }

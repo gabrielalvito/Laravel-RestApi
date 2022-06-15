@@ -84,9 +84,15 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nim)
     {
-        //
+        $data = Mahasiswa::where('nim', '=', $nim)->get();
+
+        if($data){
+            return RestApi::createApi(200, 'Berhasil', $data);
+        }else{
+            return RestApi::createApi(400, 'Gagal');
+        }
     }
 
     /**

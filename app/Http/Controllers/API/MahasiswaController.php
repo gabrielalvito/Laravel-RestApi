@@ -15,6 +15,8 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // GET ALL
     public function index()
     {
         $data = Mahasiswa::all();
@@ -42,6 +44,8 @@ class MahasiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     //POST
     public function store(Request $request)
     {
         try{
@@ -78,6 +82,8 @@ class MahasiswaController extends Controller
         }
     }
 
+
+    //GET BY NIM
     /**
      * Display the specified resource.
      *
@@ -101,6 +107,8 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //UPDATE
     public function edit($id)
     {
         //
@@ -157,6 +165,8 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     //DELETE
     public function destroy($id)
     {
         try{
